@@ -1,4 +1,5 @@
-# AG-Avion-IA
+# Algoritmo genético Avión IA
+## Algoritmo genético para encontrar las mejores configuraciones (distribuciones) de pasajeros dentro de un avión en base a centros de masa con parámetros configurables
 Algoritmo genético para distribuir pasajeros en un area de pasajeros de un avión con una configuración de n filas * 4 asientos por fila, las salidas son información de las generaciones e individuos, así como gráficas que representan a los mismos.
 
 Un avion posee una cantidad de filas y columnas, las columnas son fijas en 4 (asientos por fila) y la cantidad de filas se puede configurar por el usuario, se configuran datos en la interfaz como la cantidad de pasajeros respetando como cantidad máxima el resultado de la multiplicación de (n filas * 4), dependiendo la cantidad de pasajeros se generara esta cantidad de pasajeros con masa de una media de 70 y una desviación estándar de 15, una vez se generen la cantidad de pasajeros introducida por el usuario, el resto para completar los asientos se crearán con masa = 0 simulando la ausencia de estos pasajeros pero la presencia de los asientos para mantener la configuración de la matriz.
