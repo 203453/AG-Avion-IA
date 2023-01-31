@@ -9,7 +9,24 @@ Los pasajeros se distribuyen con distintas configuraciones generadas por el algo
 Los pasajeros poseen propiedades de: 'ID', 'MASA', 'X', 'Y'
 Los lugares y coordenadas se le asignan a los pasajeros según el orden que tenga la configuración que se le pasa como parámetro.
 
-![image](https://user-images.githubusercontent.com/77992695/215649118-a7a15da1-04e5-4981-9b00-24094a38a0e6.png)
+### Libreria utilizadas
+   tkinter
+   matplotlib
+   customtkinter
+   numpy
+   random
+   math
+   string
+
+### Interfaz
+![image](https://user-images.githubusercontent.com/77992695/215649659-e06eb936-9c4d-499b-acc4-030ad582c28e.png)
+
+### Salida consola
+![image](https://user-images.githubusercontent.com/77992695/215649931-085b05df-09c2-4451-9f7e-ecc93a43b5c6.png)
+
+
+### Gráfica de la configuración del mejor individuo
+![image](https://user-images.githubusercontent.com/77992695/215649891-5a6d6f78-c49b-43ec-b6d1-f146ccd6e0ae.png)
 
 
 ### Diagrama del funcionamiento de un algoritmo genético
