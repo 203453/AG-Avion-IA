@@ -25,7 +25,7 @@ Los lugares y coordenadas se le asignan a los pasajeros según el orden que teng
 ![image](https://user-images.githubusercontent.com/77992695/215649931-085b05df-09c2-4451-9f7e-ecc93a43b5c6.png)
 
 
-### Gráfica de la configuración del mejor individuo
+### Gráfica de la configuración del mejor individuo de cada generación
 ![image](https://user-images.githubusercontent.com/77992695/215649891-5a6d6f78-c49b-43ec-b6d1-f146ccd6e0ae.png)
 
 Cabe mencionar que al momento existen 4 graficas distintas listas para usarse, dentro del código se indica descomentar la linea de código de la gráfica que desea usarse.
