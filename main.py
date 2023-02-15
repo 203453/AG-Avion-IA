@@ -326,6 +326,7 @@ def avion(filas, num_pasajeros, generaciones, pob_max, p_mut_ind):
     best_ind = []
     worst_ind = []
     the_best = []
+    media = []
     num_asientos = asientos(filas, 4)
     pasajeros = generar_pasajeros(num_asientos, num_pasajeros)
     configuraciones, coor_cmv = generar_poblacion(pasajeros, filas)
@@ -393,6 +394,16 @@ def avion(filas, num_pasajeros, generaciones, pob_max, p_mut_ind):
         # Se ordenan por aptitud de mayor a menor con fines practicos para su uso en la graficacion
         all_ind.sort(key=take_aptitude, reverse=True)
 
+        # Sacar promedio de aptitud de individuos
+        k = 0
+        total_aptitud = 0
+        for ind in all_ind:
+            for apt in ind[2]:
+                k += 1
+                total_aptitud += apt
+        aptitud_media = total_aptitud / k
+        media.append(aptitud_media)
+
         ################################# DESCOMENTAR LA GRAFICA QUE SE DESEA USAR ##############################
 
         #graficar_generacion(all_ind, _+1, coor_cmv)
@@ -414,14 +425,14 @@ def avion(filas, num_pasajeros, generaciones, pob_max, p_mut_ind):
     
     ################################# DESCOMENTAR LA GRAFICA QUE SE DESEA USAR ##############################
 
-    graficar_mejor_individuo(best_ind, worst_ind, coor_cmv)
+    #graficar_mejor_individuo(best_ind, worst_ind, media, coor_cmv)
 
     ################################# DESCOMENTAR LA GRAFICA QUE SE DESEA USAR ##############################
 
     return the_best
 
 # Se grafica el mejor individuo de cada generacion en una grafica general de todas las generaciones
-def graficar_mejor_individuo(best_ind, worst_ind, cmv):
+def graficar_mejor_individuo(best_ind, worst_ind, media, cmv):
     fig, ax = plt.subplots(dpi=90, figsize=(10,5),facecolor='#fefffe')
     plt.suptitle('Evolución de individuos (Mejor, Peor)')
     ax.set_xlabel('Generación')
@@ -433,6 +444,7 @@ def graficar_mejor_individuo(best_ind, worst_ind, cmv):
     x_values = []
     y_values = []
     y_values_w = []
+    y_values_media = []
      
     for j in range(len(best_ind)):
         x_values.append(j+1)
@@ -444,14 +456,17 @@ def graficar_mejor_individuo(best_ind, worst_ind, cmv):
     for individuo in worst_ind:
         aptitud = individuo[2]
         y_values_w.append(round(aptitud[0],4))
-        
+
+    for individuo in media:
+        y_values_media.append(round(individuo,4))
+
     for i in range(len(x_values)):
-        plt.text(x_values[i]+0.01,y_values[i], str(y_values[i]), fontsize=7, color=color_txt,rotation=55)
-        plt.text(x_values[i]+0.01,y_values_w[i], str(y_values_w[i]), fontsize=7, color=color_txt,rotation=55)
+        plt.text(x_values[i]+0.01,y_values[i]+0.01, str(y_values[i]), fontsize=7, color=color_txt,rotation=55)
+        plt.text(x_values[i]+0.01,y_values_w[i]+0.01, str(y_values_w[i]), fontsize=7, color=color_txt,rotation=55)
+        plt.text(x_values[i]+0.01,y_values_media[i]+0.01, str(y_values_media[i]), fontsize=7, color=color_txt,rotation=55)
     line = ax.plot(x_values, y_values,marker='o',linestyle='dashed', color='b')
-    line2 = ax.plot(x_values[0], y_values[0],marker='o',linestyle='dashed', color='r')
-    line3 = ax.plot(x_values, y_values_w,marker='o',linestyle='dashed', color='b')
-    line4 = ax.plot(x_values[0], y_values_w[0],marker='o',linestyle='dashed', color='r')
+    line3 = ax.plot(x_values, y_values_w,marker='o',linestyle='dashed', color='r')
+    line5 = ax.plot(x_values, y_values_media,marker='o',linestyle='dashed', color='g')
     if len(x_values) <= 20:
         plt.xticks(x_values)
     plt.xticks(rotation=45)
